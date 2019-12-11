@@ -40,7 +40,7 @@
           @foreach ($peliculas as $pelicula)
 
     <div class="card card-peli">
-      <img class="fondo-peli" src="/images/default.png">
+      <img class="fondo-peli" src="">
       <div class="card-header">{{$pelicula->title}}</div>
       <div class="card-body">
 
@@ -48,7 +48,7 @@
           <form class="form-add-my-list" action="/my-list/" method="post">
 
               <button type="submit" class="no-button">
-                  <img src="/images/heart_no_like.png" class="like">
+                  <img src="/storage/default.png" class="like" height="300px" width="300px">
               </button>
           </form>
           </a>
@@ -70,8 +70,11 @@
 
 
        </div>
+
    </article>
 </section>
 @endforeach
-
+<nav >
+  {{$peliculas->links()}}
+</nav>
   @endsection

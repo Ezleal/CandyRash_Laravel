@@ -7,7 +7,7 @@ Route::get('/faq', "CandyRashController@faq");
 
 Route::get('/producto', "CandyRashController@producto");
 
-Route::get('/pefil', "CandyRashController@perfil");
+Route::get('/perfil', "CandyRashController@perfil");
 
 Route::get('/register', "CandyRashController@register");
 
@@ -19,3 +19,7 @@ Route::get('/candys/new', "CandyRashController@new");
 Route::post('/candys/new', "CandyRashController@create");
 
 Route::get('/candys/{id}', "CandyRashController@detail");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -12,36 +12,50 @@
                 </div>
                 <div class="col-md-6 margintop-sm">
                     <div class="row">
-                    <form class="row" action="" method="post">
-
+                    <form class="row" enctype="multipart/form-data" action="/register" method="post">
+                          @csrf
                         <div class="col-md-12">
                           <div class="form-group">
-                              <input type="text" class="form-control" value="" id="" name="usuario" placeholder="Usuario">
-                              <p></p>
+                              <input type="text" class="form-control @error ('name') is-invalid @enderror" value="{{old('name')}}" id="" name="name" placeholder="Usuario">
+                            @error ('name')
+              <div class="invalid-feedback">{{$message}}</div>
+                            @enderror
                           </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="email" class="form-control" id="" value="" name="email" placeholder="Email">
-                                <p></p>
+                                <input type="email" class="form-control @error ('email') is-invalid @enderror" id="" value="{{old('email')}}" name="email" placeholder="Email">
+                                @error ('email')
+                  <div class="invalid-feedback">{{$message}}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="password" class="form-control" id="" name="password"  value="" placeholder="Contraseña">
-                                <p></p>
+                                <input type="password" class="form-control @error ('password') is-invalid @enderror" id="" name="password"  value="" placeholder="Contraseña">
+                                @error ('password')
+                  <div class="invalid-feedback">{{$message}}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="password" class="form-control" id="" name="confirmar" placeholder="Confirme contraseña">
+                                <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="Confirme contraseña">
                             </div>
                         </div>
                         <div class="col-md-12">
+                          <div class="custom-file">
+                   <input type="file" class="custom-file-input @error('avatar') is-invalid @enderror" id="avatar" name="avatar">
+                   <label class="custom-file-label" for="avatar">Seleccione una imagen (opcional)</label>
+                   <div class="invalid-feedback">@error('avatar')
+                       {{$message}}
+                   @enderror</div>
+                 </div>
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <p><input type="checkbox" class="" id="term" name="terminos"> Acepto términos y Condiciones</p>
-                                <p></p>
+
+
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -53,4 +67,4 @@
             </div>
         </div>
     </section>
-@endsection
+                            @endsection

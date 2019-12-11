@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/perfil';
 
     /**
      * Create a new controller instance.
@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'avatar' => ['nullable',]
         ]);
     }
 
@@ -61,12 +62,25 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+
+
+     protected function create(array $data)
+       {
+           $imagen = 'default.png';
+           if (isset($data['avatar'])) {
+               $imagen = $data['avatar']->store('public');
+               $imagen = basename($imagen);
+           }
+           return User::create([
+               'name' => $data['name'],
+               'email' => $data['email'],
+               'password' => Hash::make($data['password']),
+               'avatar' => $imagen,
+           ]);
+       }
+
+    public function showRegistrationForm()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+      return view('register');
     }
 }

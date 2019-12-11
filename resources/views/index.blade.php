@@ -16,7 +16,7 @@
                 <h1 class="margintop-lg">Bienvenidos a Candy Rash</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ea consequuntur, odit veniam mollitia
                     aliquam reiciendis dignissimos, vitae sapiente neque, cum dolorum.</p>
-                <a href="/login" class="btn btn-secondary margintop-sm">Ingresar <i class="icon ion-md-arrow-dropright-circle colorDark"></i></a>
+                <a href="/login" class="btn badge badge-danger margintop-sm ">Ingresar</a>
             </div>
         </div>
     </section>
