@@ -17,13 +17,13 @@
              <div class="ordenamiento">
                <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="?orden=title">Titulo</a></li>
-                <li class="breadcrumb-item"><a href="?orden=genero">Genero</a></li>
-                <li class="breadcrumb-item "><a href="?orden=rating">Rating</a></li>
-                <li class="breadcrumb-item active"><a href="?orden=awards">Awards</a></li>
+                <li class="breadcrumb-item"><a href="?orden=genero">Categoria</a></li>
+                <li class="breadcrumb-item "><a href="?orden=rating">Precio</a></li>
+
               </ol>
              </div>
              <nav >
-               {{$peliculas->links()}}
+               {{$candys->links()}}
              </nav>
          </div>
 
@@ -37,28 +37,28 @@
 
          <div class="card-group">
 
-          @foreach ($peliculas as $pelicula)
+          @foreach ($candys as $candy)
 
     <div class="card card-peli">
       <img class="fondo-peli" src="">
-      <div class="card-header">{{$pelicula->title}}</div>
+      <div class="card-header">{{$candy->title}}</div>
       <div class="card-body">
 
           <span class="card-title"></span>
           <form class="form-add-my-list" action="/my-list/" method="post">
 
               <button type="submit" class="no-button">
-                  <img src="/storage/default.png" class="like" height="300px" width="300px">
+                  <img src="/images/default.png" class="like" height="300px" width="300px">
               </button>
           </form>
           </a>
       </div>
       <div class="card-body">
-        <p class="card-text">{{$pelicula->genre_id}}</p>
-        <p class="card-text">Rating: {{$pelicula->rating}}</p>
-        <p class="card-text">Awards: {{$pelicula->awards}} </p>
+        <p class="card-text">Categoria: {{$candy->getCategorieName()}}</p>
+        <p class="card-text">Precio: ${{$candy->price}}</p>
+        <p class="card-text">Stock: {{$candy->stock}} </p>
         <p class="card-text">
-          <a class="btn btn-primary" href="/candys/{{$pelicula->id}}">Ver Mas</a>
+          <a class="btn btn-primary" href="/candys/{{$candy->id}}">Ver Mas</a>
 
           <a class="btn btn-success" href="/candys/edit">Editar</a>
 
@@ -75,6 +75,6 @@
 </section>
 @endforeach
 <nav >
-  {{$peliculas->links()}}
+  {{$candys->links()}}
 </nav>
   @endsection

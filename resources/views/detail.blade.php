@@ -18,34 +18,34 @@
 
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="rating">Rating: </label>
-                        {{$detalle->rating}}
+                        <label for="rating">Precio: $ </label>
+                        {{$detalle->price}} x Unidad
                       </div>
                     </div>
 
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="awards">Premios: </label>
-                        {{$detalle->awards}}
+                        <label for="awards">Stock: </label>
+                        {{$detalle->stock}} Unidades
                       </div>
                     </div>
 
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="length">Duracion: </label>
-                        {{$detalle->length}}
+                        <label for="size">Peso: </label>
+                        {{$detalle->size}} Grs
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="release_date">Fecha de Lanzamiento: </label>
+                        <label for="release_date">Publicado el: </label>
                         {{$detalle->release_date}}
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="genre_id">Genero: </label>
-                        {{$detalle->getGenreName()}}
+                        <label for="categorie_id">Categoria: </label>
+                        {{$detalle->getCategorieName()}}
                       </div>
                     </div>
 

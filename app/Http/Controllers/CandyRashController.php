@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Movie;
-use App\Genre;
+use App\Candy;
+use App\Categorie;
 
 class CandyRashController extends Controller
 {
@@ -42,31 +42,34 @@ class CandyRashController extends Controller
 
   public function listado()
 {
-  $peliculas = Movie::paginate(5);
+  $candys = Candy::paginate(6);
 
-$vac = compact('peliculas');
+$vac = compact('candys');
 return view('listado', $vac);
 
 }
 
 public function new()
 {
-  $genres = Genre::all();
-  $vac = compact('genres');
+  $categories = Categorie::all();
+  $vac = compact('categories');
   return view('new', $vac);
 }
 public function create()
 {
-  var_dump($_POST);
+  dd($_POST);
 }
 public function detail($id)
 {
-    $detalle = Movie::find($id);
-    
+    $detalle = Candy::find($id);
+
 
     $vac = compact('detalle');
 
       return view('detail', $vac );
+}
+public function edit(){
+  return view('edit');
 }
 
 }

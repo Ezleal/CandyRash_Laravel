@@ -94,6 +94,11 @@ font-family: 'Mansalva', cursive;
 font-size: 150%;
 color: red;
 }
+.pandy{
+font-family: 'Mansalva', cursive;
+font-size: 300%;
+color: blue;
+}
 .login{
 
   text-align: center;
@@ -111,6 +116,12 @@ section { padding: 120px 0; }
     max-width: 800px;
     margin: 0 auto 60px auto;
     text-align: center;
+}
+.content-centerr {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    text-align: center;
+    margin-top: 142px;
 }
 
 .full-width {
@@ -155,8 +166,20 @@ section { padding: 120px 0; }
 
 }
 
+#principalp {
+    background-image: url(../images/principal.jpg);
+    background-size: cover;
+    padding-top: 90px;
+    min-height: 700px;
+    color: #ffffff;
+
+}
 #principal p {
     color: #ffffff;
+}
+
+.pad h1{
+  margin-top: 58px;
 }
 
 /* //////////////
@@ -215,6 +238,17 @@ section { padding: 120px 0; }
     bottom: 0;
 
     left: 20px;
+}
+.portas-details {
+    position: absolute;
+    color: blue;
+    bottom: 0;
+
+    left: 20px;
+}
+.portas-details span {
+    font-size: 14px;
+    background: red;
 }
 
 .tortas-details span {
@@ -300,7 +334,6 @@ section { padding: 120px 0; }
 
 .produc-light {
     /*background-color: #ffffff;*/
-    background-image: url('../images/_icon.png');
     background-position: center;
     background-repeat: no-repeat;
     background-position: center;
@@ -462,7 +495,9 @@ footer .list-inline .list-inline-item {
     .plans { min-width: unset; padding: 40px; }
     .carousel-item p { font-size: 20px; }
     .produc { min-width: unset; padding: 40px; }
-
+    .pandy{
+      font-size: 200%;
+      }
     .footer-menu {
         display: block !important;
         padding: 20px 0 !important;
@@ -472,7 +507,9 @@ footer .list-inline .list-inline-item {
 
 }
 
-@media (min-width: 576px) and (max-width: 767.98px) { }
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+ }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
     .productos-details h2 { font-size: 30px; }

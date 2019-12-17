@@ -20,6 +20,11 @@ Route::post('/candys/new', "CandyRashController@create");
 
 Route::get('/candys/{id}', "CandyRashController@detail");
 
+Route::post('/candys/edit', "CandyRashController@edit");
+
 Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::get('/home', 'HomeController@index')->name('home');

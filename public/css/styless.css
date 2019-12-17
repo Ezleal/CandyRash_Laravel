@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+
+
+
+
+#principalp {
+    background-image: url(../images/perf.jpg);
+    background-size: cover;
+    padding-top: 90px;
+
+
+    min-height: 700px;
+    color: #ffffff;
+}
+.im{
+  text-align: center;
+background-position: center;
+}
+
+.candy{
+font-family: 'Mansalva', cursive;
+font-size: 150%;
+color: red;
+background: blue;
+text-align: center;
+}
+.fandy{
+font-family: 'Mansalva', cursive;
+font-size: 150%;
+color: red;
+
+}
+
+
+/* //////////////
+   Media queries
+//////////////*/
+
+
+@media (max-width: 575.98px) {
+
+    h1 { font-size: 40px; line-height: normal; }
+    .productos-details h2 { font-size: 32px; }
+    .plans { min-width: unset; padding: 40px; }
+    .carousel-item p { font-size: 20px; }
+    .produc { min-width: unset; padding: 40px; }
+
+    .footer-menu {
+        display: block !important;
+        padding: 20px 0 !important;
+        font-size: 20px;
+
+    }
+
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) { }
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .productos-details h2 { font-size: 30px; }
+    .plans { min-width: unset; padding: 40px 20px;}
+    .produc { min-width: unset; padding: 40px 20px;}
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) { }
+
+@media (min-width: 1200px) { }

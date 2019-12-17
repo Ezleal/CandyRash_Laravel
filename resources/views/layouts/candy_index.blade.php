@@ -39,14 +39,12 @@
               </button>
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-
+                @auth
                   <ul class="navbar-nav ml-auto">
+
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">Ingresar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Registrarse</a>
+                        <a class="nav-link" href="/perfil">Perfil</a>
                     </li>
                       <li class="nav-item submenu dropdown">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -69,39 +67,51 @@
                   <li class="nav-item">
                       <a class="nav-link" href="/#contact">Contacto</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Salir</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="dislpay:none">
+                        @csrf
+                    </form>
+                  </li>
+                               </ul>
+
+                @else
+
+
+
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Ingresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Registrarse</a>
+                    </li>
+                      <li class="nav-item submenu dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">Productos</a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/candys">Dulces</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#tortas">Tortas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#pricing">Promos</a>
+                    </li>
+
+                  </ul>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/#testimonial">Testimonios</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/#contact">Contacto</a>
+                  </li>
                                </ul>
 
 
+    @endauth
 
-                             <ul class="navbar-nav ml-auto">
-                               <li class="nav-item">
-                                   <a class="nav-link" href="/logout">Salir</a>
-                               </li>
-                               <li class="nav-item">
-                                   <a class="nav-link" href="/perfil">Perfil</a>
-                               </li>
-                                 <li class="nav-item submenu dropdown">
-                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false">Productos</a>
-                             <ul class="dropdown-menu">
-                               <li class="nav-item">
-                                   <a class="nav-link" href="/#productos">Dulces</a>
-                               </li>
-                               <li class="nav-item">
-                                   <a class="nav-link" href="/#tortas">Tortas</a>
-                               </li>
-                               <li class="nav-item">
-                                   <a class="nav-link" href="/#pricing">Promos</a>
-                               </li>
-
-                             </ul>
-                             <li class="nav-item">
-                                 <a class="nav-link" href="/#testimonial">Testimonios</a>
-                             </li>
-                             <li class="nav-item">
-                                 <a class="nav-link" href="/#contact">Contacto</a>
-                             </li>
-                                          </ul>
 
               </div>
           </div>

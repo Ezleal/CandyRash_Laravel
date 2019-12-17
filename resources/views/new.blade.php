@@ -24,32 +24,32 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="rating" value="" name="rating" placeholder="Rating">
+                            <input type="text" class="form-control" id="price" value="" name="price" placeholder="Precio">
                             <p></p>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="awards" name="awards"  value="Premios" placeholder="awards">
+                            <input type="text" class="form-control" id="stock" name="stock"  value="" placeholder="Stock">
                             <p></p>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="length" name="length" placeholder="Duracion">
+                            <input type="text" class="form-control" id="size" name="size" placeholder="Peso (Gramos)">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="release_date" name="release_date" placeholder="Fecha De Lanzamiento">
+                            <input type="date" class="form-control" id="release_date" name="release_date" placeholder="Fecha De Lanzamiento">
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="form-group" placeholder="Genero">
-                            <select class="form-control" name="genre_id" id="genre_id" >
-                              <option value="">Elije Uno</option>
-                        @foreach ($genres as $genre)
-                            <option value={{$genre->id}}>{{$genre->name}}</option>
+                        <div class="form-group">
+                            <select class="form-control" name="categorie_id" id="categorie_id" placeholder="Categoria">
+                                <option value="">Selecciona una Categoria</option>
+                        @foreach ($categories as $categorie)
+                            <option value="{{$categorie->id}}">{{$categorie->name}}</option>
                         @endforeach
                             </select>
                         </div>
