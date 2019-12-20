@@ -50,14 +50,21 @@ return view('listado', $vac);
 }
 
 public function new()
+//para que es
 {
   $categories = Categorie::all();
   $vac = compact('categories');
   return view('new', $vac);
 }
-public function create()
+public function create(Request $req)
 {
-  dd($_POST);
+  $productonuevo = new Candy();
+    $productonuevo->title = $req["title"];
+    $productonuevo->stock = $req["stock"];
+    $productonuevo->price = $req["price"];
+
+    $productonuevo->save();
+    return redirect("/");
 }
 public function detail($id)
 {
@@ -68,8 +75,12 @@ public function detail($id)
 
       return view('detail', $vac );
 }
+
+//??
 public function edit(){
   return view('edit');
 }
+
+
 
 }

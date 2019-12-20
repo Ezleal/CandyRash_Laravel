@@ -21,4 +21,19 @@ class Candy extends Model
 
       return "Sin Categoria";
     }
+
+
+    public function users(){
+      return $this->belongsToMany("App\User","mi_carrito","candy_id","user_id" );
+    }
+
+
+//
+// public function getName()
+// {
+//   $candy = Candy::find($this->candy_id);
+//
+//
+//   return $candy->title;
+// }
 }

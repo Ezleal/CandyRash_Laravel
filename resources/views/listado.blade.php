@@ -1,20 +1,22 @@
-@extends('layouts/candy_index')
+@extends('layouts/candy_index_list')
 
 @section('main')
 
-<section class="principal">
-   <article class="nuevas" id="peliculas">
-       <div class="peliculas">
+<section class="content-centerc">
+       <div class="candys content-centerc">
           <div class="titulo-nav">
                <h3>Nuestros Dulces Candy Rash</h3>
                <div>
+              @if(Auth::user() && Auth::user()->admin)
+                <br>
+                 <a href="/candys/new" class="btn btn-primary">Cargar Candy</a>
 
-                 <a href="/candys/new" class="btn btn-primary">Nueva</a>
-
+              @endif
                </div>
+               <br>
          </div>
          <div class="sub-titulo">
-             <div class="ordenamiento">
+             <div class="ordenamiento content-centerc">
                <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="?orden=title">Titulo</a></li>
                 <li class="breadcrumb-item"><a href="?orden=genero">Categoria</a></li>
@@ -27,20 +29,13 @@
              </nav>
          </div>
 
-         <div class="">
 
-                <div class="alert alert-">
-
-                </div>
-
-         </div>
-
-         <div class="card-group">
+         <div class="card-group content-centerc">
 
           @foreach ($candys as $candy)
 
-    <div class="card card-peli">
-      <img class="fondo-peli" src="">
+    <div class="card content-centerc">
+      <img class="fondo" src="">
       <div class="card-header">{{$candy->title}}</div>
       <div class="card-body">
 
@@ -55,15 +50,66 @@
       </div>
       <div class="card-body">
         <p class="card-text">Categoria: {{$candy->getCategorieName()}}</p>
-        <p class="card-text">Precio: ${{$candy->price}}</p>
         <p class="card-text">Stock: {{$candy->stock}} </p>
         <p class="card-text">
-          <a class="btn btn-primary" href="/candys/{{$candy->id}}">Ver Mas</a>
-
+          <a class="btn btn-danger" href="/candys/{{$candy->id}}">Ver Mas</a>
+          @if(Auth::user() && Auth::user()->admin)
           <a class="btn btn-success" href="/candys/edit">Editar</a>
+          
+         @endif
 
           </p>
+
+        <form class="row" action="" method="post">
+          <div class="col-md-4">
+
+          </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                  @csrf
+                      <input type="hidden" value="{{Auth::user()->id}}" name="usuario" >
+                      <input type="hidden" value="{{$candy->id}}" name="id" >
+                        <span class="invalid-feedback" role="alert">
+                          <strong>@error('id') {{ $message }} @enderror</strong>
+                        </span>
+              </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                      <input type="text" class="form-control @error('productocantidad') is-invalid @enderror" id="productocantidad" value="1" name="productocantidad" placeholder="">
+                        <span class="invalid-feedback" role="alert">
+                          <strong>@error('productocantidad') {{ $message }} @enderror</strong>
+                        </span>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <p>$</p>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                      <input type="text" class="form-control" value="{{$candy->price}}" name="subtotal" readonly >
+                        <span class="invalid-feedback" role="alert">
+                          <strong>@error('subtotal') {{ $message }} @enderror</strong>
+                        </span>
+              </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                      <button type="submit" class="btn btn-primary full-width" name="button">{{ __('') }}Comprar</button>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </form>
       </div>
+
+
+
     </div>
 
           </div>
@@ -74,7 +120,7 @@
    </article>
 </section>
 @endforeach
-<nav >
+<nav class="content-center">
   {{$candys->links()}}
 </nav>
   @endsection

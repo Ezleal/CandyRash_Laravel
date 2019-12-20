@@ -1,6 +1,7 @@
 @extends('layouts/candy_index')
 
 @section('main')
+  <script type="text/javascript" src="/js/validation-log.js"></script>
 
 
     <section id="contact">
@@ -12,7 +13,7 @@
                 </div>
                 <div class="col-md-4 margintop-sm">
                     <div class="row">
-                      <form class="row" action="" method="post">
+                      <form id="login" class="row" action="" method="post">
                         <div class="col-md-12">
                           <p class="candy login">Ingresar</p>
                           <div class="form-group">

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categorie extends Model
 {
-    //
+    //unir con tabla
 }

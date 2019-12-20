@@ -15,13 +15,13 @@
                 <div class="col-md-6">
                     <div class="produc-container ">
                         <div class="produc produc-light">
-                          
+
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="produc-container">
-                        <div class=" produc-dark">
+                        <div class="produc-dark">
                             <h4>PSYCHEDELIC CANDY RASH X 200</h4>
                             <h2>$600 </h2>
                             <h4>Psychedelic pack incluye</h4>

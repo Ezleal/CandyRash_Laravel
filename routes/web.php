@@ -15,10 +15,10 @@ Route::get('/login', "CandyRashController@login");
 
 Route::get('/candys', "CandyRashController@listado");
 
-Route::get('/candys/new', "CandyRashController@new");
-Route::post('/candys/new', "CandyRashController@create");
+Route::get('/candys/new', "CandyRashController@new")->middleware(['auth', 'is_admin']);
+Route::post('/candys/new', "CandyRashController@create")->middleware(['auth', 'is_admin']);
 
-Route::get('/candys/{id}', "CandyRashController@detail");
+Route::get('/candys/{id}', "CandyRashController@detail")->middleware(['auth']);
 
 Route::post('/candys/edit', "CandyRashController@edit");
 
@@ -28,3 +28,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+route::post('/candys' , 'CarritoController@crear');
+
+Route::get('/carrito', "CarritoController@listado")->middleware(['auth']);

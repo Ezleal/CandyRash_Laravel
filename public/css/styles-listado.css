@@ -114,6 +114,7 @@ color: blue;
 .margintop-lg { margin-top: 60px; }
 
 section { padding: 120px 0;
+  padding-bottom: 0px 
 }
 section .content-centerc { padding: 0px 0;
 padding-bottom: 0px }
@@ -224,7 +225,7 @@ padding-bottom: 0px }
     position: absolute;
     bottom: 25px;
     left: 25px;
-    z-index: 10;
+    z-index: 9000;
 }
 
 .productos-details h2 {
@@ -343,7 +344,6 @@ padding-bottom: 0px }
    border-radius: 2px;
    min-width: 450px;
    min-height: 400px;
-   background-image: url('../images/default.png');
 
 }
 

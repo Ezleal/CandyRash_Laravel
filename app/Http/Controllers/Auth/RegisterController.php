@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'avatar' => ['nullable',]
+            'avatar' => ['nullable', 'image', 'max:10000']
         ]);
     }
 
@@ -66,7 +66,7 @@ class RegisterController extends Controller
 
      protected function create(array $data)
        {
-           $imagen = 'default.png';
+           $imagen ='/default.png';
            if (isset($data['avatar'])) {
                $imagen = $data['avatar']->store('public');
                $imagen = basename($imagen);
