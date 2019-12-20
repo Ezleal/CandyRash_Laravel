@@ -41,7 +41,24 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @auth
                   <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
 
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <a class="dropdown-item" href="/carrito"> Carrito  </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="/perfil">Perfil</a>
@@ -59,7 +76,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/#pricing">Promos</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="/candys">Listado</a>
+                    </li>
                   </ul>
                   <li class="nav-item">
                       <a class="nav-link" href="/#testimonial">Testimonios</a>
@@ -68,7 +87,7 @@
                       <a class="nav-link" href="/#contact">Contacto</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Salir</a>
+                    {{-- <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Salir</a> --}}
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="dislpay:none">
                         @csrf
                     </form>
@@ -98,6 +117,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/#pricing">Promos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/candys">Listado</a>
                     </li>
 
                   </ul>

@@ -2,10 +2,10 @@
 
 @section('main')
 
-<section class="content-centerc">
+
        <div class="candys content-centerc">
+         <h3>Carrito de {{Auth::user()->name}}</h3>
           <div class="titulo-nav">
-               <h3>Carrito de {{Auth::user()->name}}</h3>
                {{-- <div>
               @if(Auth::user() && Auth::user()->admin)
                 <br>
@@ -14,44 +14,59 @@
               @endif
                </div> --}}
          </div>
-         <div class="sub-titulo">
-             {{-- <div class="ordenamiento content-centerc">
-               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="?orden=title">Titulo</a></li>
-                <li class="breadcrumb-item"><a href="?orden=genero">Categoria</a></li>
-                <li class="breadcrumb-item "><a href="?orden=rating">Precio</a></li>
 
-              </ol>
-             </div> --}}
-             <nav >
-               {{$listaproductos->links()}}
-             </nav>
-         </div>
-
-
-         <div class="card-group content-centerc">
-  <div class="col-md-12">
+<table>
+  <?php $total = 0;  ?>
           @foreach ($listaproductos as $candy)
           @if ($candy->user_id == (Auth::user()->id))
-  <div class="col-md-4">
-    <div class="card content-centerc">
-      <img class="fondo" src="">
-      <div class="card-header">{{$candy->candy_id}}</div>
-      <div class="card-body">
+            @if ($candy->eliminado == 1)
+              @continue
+            @endif
+            @if ($candy->comprado == 1)
+              @continue
+            @endif
 
-          <span class="card-title"></span>
-          <form class="form-add-my-list" action="/my-list/" method="post">
+            <tr>
+              <form class="" action="" method="post">
+                <input type="hidden" class="form-control" value="{{$candy->id}}" name="id" readonly >
+  {{-- <div class="col-md-4">
+    <div class="card content-centerc"> --}}
+      {{-- <img class="fondo" src=""> --}}
+      <td>
 
-              <button type="submit" class="no-button">
-                  <img src="/images/default.png" class="like" height="300px" width="300px">
-              </button>
-          </form>
-          </a>
+          <img src="/images/default.png" class="like" height="70px" width="70px">
+
+      </td>
+      <td>
+
+      <div class="card-header">
+        <input type="text" class="form-control" value="{{$candy->producto}}" name="subtotal" readonly >
       </div>
+      </td>
       <div class="card-body">
+        <td>
+
         {{-- <p class="card-text">Categoria: {{$candy->getCategorieName()}}</p> --}}
-        <p class="card-text">Cantidad: {{$candy->cantidad}}</p>
-        <p class="card-text">Subtotal: ${{$candy->subtotal}} </p>
+        <p class="card-text">Cantidad:</p>
+      </td>
+      <td>
+
+        <input type="text" class="form-control" value="{{$candy->cantidad}}" name="subtotal" readonly >
+      </td>
+      <td>
+
+        <p class="card-text">Subtotal:</p>
+        <?php $total = ($candy->cantidad*$candy->subtotal)+$total; ?>
+      </td>
+      <td>
+
+        <input type="text" class="form-control" value="${{$candy->subtotal}}" name="subtotal" readonly >
+      </td>
+      <td>
+
+        {{-- <input type="submit" class="form-control" value="Eliminar" name="" > --}}
+        <a class="btn btn-success" href="/carrito/{{$candy->id}}">Eliminar</a>
+      </td>
         {{-- <p class="card-text">
           <a class="btn btn-danger" href="/candys/{{$candy->id}}">Ver Mas</a>
           @if(Auth::user() && Auth::user()->admin)
@@ -60,20 +75,30 @@
 
           </p> --}}
       </div>
-    </div>
-  </div>
-  </div>
+    {{-- </div>
+  </div> --}}
+  {{-- </div> --}}
 
-          </div>
+          {{-- </div> --}}
 
 
        </div>
 
-   </article>
-</section>
+
+     </form>
+</tr>
 @endif
 @endforeach
-<nav class="content-center">
+<tr>
+  <td><h3>Total:</h3></td>
+  <td><h3>${{$total}}</h3></td>
+  <td>
+
+    <a class="btn btn-success" href="/compras/{{Auth::user()->id}}">Comprar</a>
+  </td>
+</tr>
+</table>
+{{-- <nav class="content-center">
   {{$listaproductos->links()}}
-</nav>
+</nav> --}}
   @endsection

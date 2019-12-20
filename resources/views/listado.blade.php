@@ -43,7 +43,11 @@
           <form class="form-add-my-list" action="/my-list/" method="post">
 
               <button type="submit" class="no-button">
+                @if ($candy->proavatar)
+                  <img src="/storage/{{$candy->proavatar}}" class="like" height="300px" width="300px">
+                @else
                   <img src="/images/default.png" class="like" height="300px" width="300px">
+                @endif
               </button>
           </form>
           </a>
@@ -54,29 +58,28 @@
         <p class="card-text">
           <a class="btn btn-danger" href="/candys/{{$candy->id}}">Ver Mas</a>
           @if(Auth::user() && Auth::user()->admin)
-          <a class="btn btn-success" href="/candys/edit">Editar</a>
-          
+          <a class="btn btn-success" href="/candys/edit/{{$candy->id}}">Editar</a>
          @endif
 
           </p>
 
         <form class="row" action="" method="post">
-          <div class="col-md-4">
-
-          </div>
-            <div class="col-md-4">
+            <div class="col-md-12">
               <div class="form-group">
                   @csrf
-                      <input type="hidden" value="{{Auth::user()->id}}" name="usuario" >
+                      @if (Auth::user())
+                          <input type="hidden" value="{{Auth::user()->id}}" name="usuario" >
+                      @else
+                          <input type="hidden" value="0" name="usuario" >
+                      @endif
+                      <input type="hidden" class="form-control @error('producto') is-invalid @enderror" id="producto" value="{{$candy->title}}" name="producto" placeholder="">
                       <input type="hidden" value="{{$candy->id}}" name="id" >
                         <span class="invalid-feedback" role="alert">
                           <strong>@error('id') {{ $message }} @enderror</strong>
                         </span>
               </div>
             </div>
-            <div class="col-md-4">
 
-            </div>
             <div class="col-md-6">
               <div class="form-group">
                       <input type="text" class="form-control @error('productocantidad') is-invalid @enderror" id="productocantidad" value="1" name="productocantidad" placeholder="">
@@ -86,11 +89,11 @@
               </div>
             </div>
             <div class="col-md-1">
-              <p>$</p>
+              <p></p>
             </div>
             <div class="col-md-5">
               <div class="form-group">
-                      <input type="text" class="form-control" value="{{$candy->price}}" name="subtotal" readonly >
+                      <input type="text" class="form-control" value="${{$candy->price}}" name="subtotal" readonly >
                         <span class="invalid-feedback" role="alert">
                           <strong>@error('subtotal') {{ $message }} @enderror</strong>
                         </span>
@@ -99,7 +102,9 @@
             <div class="col-md-4">
 
             </div>
+
             <div class="col-md-4">
+
                       <button type="submit" class="btn btn-primary full-width" name="button">{{ __('') }}Comprar</button>
             </div>
             <div class="col-md-4">

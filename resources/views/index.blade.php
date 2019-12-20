@@ -17,7 +17,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ea consequuntur, odit veniam mollitia
                     aliquam reiciendis dignissimos, vitae sapiente neque, cum dolorum.</p>
                     @auth
-                      <a href="/perfil" class="btn badge badge-danger margintop-sm ">Mi Perfil</a>
+                      <a href="/carrito" class="btn badge badge-danger margintop-sm ">Carrito</a>
               @else
                 <a href="/login" class="btn badge badge-danger margintop-sm ">Ingresar</a>
                 @endauth
@@ -95,6 +95,9 @@
 
                             <a href="/producto">
                                 <h2>Frutos Rojos</h2>
+
+
+
                             </a>
                             <a href="/producto">
                                 <p>— Mas de 100 variedades de productos frutales!!!</p>
@@ -193,6 +196,7 @@
     <section id="pricing" class="divider">
         <div class="container">
             <div class="content-center">
+
                 <h2>Precios dulces <b>para cada negocio</b></h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ea consequuntur, odit veniam mollitia
                     aliquam reiciendis dignissimos, vitae sapiente neque, cum dolorum. Suscipit expedita obcaecati

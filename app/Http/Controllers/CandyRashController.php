@@ -62,9 +62,13 @@ public function create(Request $req)
     $productonuevo->title = $req["title"];
     $productonuevo->stock = $req["stock"];
     $productonuevo->price = $req["price"];
-
+    if ($req["proavatar"]){
+    $ruta = $req->file("proavatar")->store("public");
+    $nombre = basename($ruta);
+    $productonuevo->proavatar = $nombre;
+  }
     $productonuevo->save();
-    return redirect("/");
+    return redirect("/candys");
 }
 public function detail($id)
 {
@@ -77,9 +81,55 @@ public function detail($id)
 }
 
 //??
-public function edit(){
-  return view('edit');
+public function edit($id){
+  $detalle = Candy::find($id);
+  // $detalle->title = $req["title"];
+  // $detalle->stock = $req["stock"];
+  // $detalle->price = $req["price"];
+  //
+  // $detalle->save();
+  // return redirect("/");
+
+  $vac = compact('detalle');
+
+    return view('edit2', $vac );
+
+
 }
+
+public function edit2($id,Request $req){
+  $detalle = Candy::find($id);
+  $detalle->title = $req["title"];
+  $detalle->stock = $req["stock"];
+  $detalle->price = $req["price"];
+
+  $detalle->save();
+  return redirect("/candys");
+
+}
+
+public function eliminate($id){
+  // $id = $req["id"];
+  $detalle = Candy::find($id);
+
+
+  $vac = compact('detalle');
+
+    return view('eliminar', $vac );
+
+}
+
+public function delete(Request $req){
+   $id = $req["id"];
+  $candy = Candy::find($id);
+
+
+  $candy->delete();
+  return redirect("/candys");
+
+}
+
+
 
 
 
